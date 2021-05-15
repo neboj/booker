@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+
+    <main>
+        {{ form_start(form) }}
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.password.first, {'attr': {'class':'form-control'}}) }}
+            {{ form_row(form.password.second, {'attr': {'class':'form-control'}}) }}
+            <button class="btn btn-lg btn-primary button primary" type="submit">
+                Register
+            </button>
+        {{ form_end(form) }}
+
+    </main>
+{% endblock %}

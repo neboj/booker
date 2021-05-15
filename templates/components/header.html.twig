@@ -1,0 +1,26 @@
+<header>
+    <div class="logo">
+        <a href="{{ path('homepage') }}">Booker</a>
+    </div>
+
+    <nav>
+        <ul class="menu">
+            {% if is_granted('ROLE_USER') -%}
+                <li style="color: black;">User!</li>
+            {%- elseif is_granted('ROLE_ADMIN') %}
+                <li style="color: black;">Admin!</li>
+            {%- endif %}
+            {% if app.user %}
+                <li style="color: black;">Logged in as {{ app.user.username }}</li>
+            {% if is_granted('ROLE_USER') -%}
+                <li><a href="{{ path('create_booking') }}">Create Booking</a></li>
+                <li><a href="{{ path('list_bookings') }}">List Bookings</a></li>
+            {%- endif %}
+                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+{#                <li><a href="{{ path('homepage') }}">Homepage</a></li>    #}
+            {% endif %}
+
+        </ul>
+    </nav>
+</header>

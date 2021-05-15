@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+<main>
+    <form>
+        <div>
+            <input name="email" type="email" placeholder="Email *" required>
+        </div>
+        <div>
+            <input name="password" type="password" placeholder="Password *" required>
+        </div>
+        <div class="button-wrapper">
+            <button class="button primary" type="submit" formmethod="post">Login</button>
+        </div>
+    </form>
+</main>
+    {% include 'components/footer.html.twig' %}
+
+{% endblock %}

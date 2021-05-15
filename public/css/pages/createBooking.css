@@ -1,0 +1,45 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form h1 {
+    text-align: center;
+}
+
+#booking_datetime_date {
+    margin-bottom: 10px;
+}
+
+#booking_datetime div i {
+    margin-right: 20px;
+    width: 10px;
+}
+
+#booking_datetime select {
+    padding: 10px;
+    margin-right: 5px;
+    width: 100px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+textarea {
+    margin-bottom: 40px;
+    margin-left: 30px;
+    width: 90%;
+    height: 100px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}

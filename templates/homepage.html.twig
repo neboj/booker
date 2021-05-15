@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomepageController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/homepage.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+<main>
+
+    <section class="presentation">
+        <div class="introduction">
+            <div class="intro-text">
+                <h1>Peace of mind with instant<br>
+                    booking confirmation.
+                </h1>
+                <p>Book now & relax.</p>
+            </div>
+            <div class="cta">
+                <a href="{{ path('app_login') }}" class="button-wrapper"><div class="cta-login button primary">Login</div></a>
+                <a href="{{ path('registration') }}" class="button-wrapper"><div class="cta-login button secondary">Sign up</div></a>
+            </div>
+        </div>
+        <div class="cover">
+            <img src="{{ asset('images/calendar-cover.png') }}">
+        </div>
+    </section>
+
+</main>
+
+    {% include 'components/footer.html.twig' %}
+{% endblock %}

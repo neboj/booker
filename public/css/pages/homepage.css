@@ -1,0 +1,43 @@
+.presentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.introduction {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 400px;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.intro-text h1{
+    margin-bottom: 5px;
+    font-size: 35px;
+}
+
+.intro-text p {
+    margin-bottom: 40px;
+}
+
+.cover {
+    flex: 1;
+}
+
+.cover img {
+    width: 100%;
+    min-width: 350px;
+}
+
+@media only screen and (max-width: 600px) {
+    .introduction {
+        min-width: initial;
+    }
+}
