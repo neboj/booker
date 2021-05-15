@@ -14,7 +14,7 @@
                 <li style="color: black;">Logged in as {{ app.user.username }}</li>
             {% if is_granted('ROLE_USER') -%}
                 <li><a href="{{ path('create_booking') }}">Create Booking</a></li>
-                <li><a href="{{ path('list_bookings') }}">List Bookings</a></li>
+                <li><a href="{{ path('list_bookings') }}">My Bookings</a></li>
             {%- endif %}
                 <li><a href="{{ path('app_logout') }}">Logout</a></li>
             {% else %}

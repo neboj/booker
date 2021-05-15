@@ -22,16 +22,14 @@
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Email *" required autofocus>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Password *" required>
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-        <button class="btn btn-lg btn-primary button primary" type="submit">
-            Sign in
-        </button>
+        <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+        <form name="user" method="post">
+            <div><label for="inputEmail" class="required">Email</label><input type="email" value="{{ last_username }}" id="inputEmail" name="email" required="required" class="form-control"></div>
+            <div><label for="inputPassword" class="required">Password</label><input type="password" id="inputPassword" name="password" required="required" class="form-control"></div>
+            <button class="btn btn-lg btn-primary button primary" type="submit">Login</button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </form>
     </form>
-</main>
+
+    </main>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Register!{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -12,8 +12,11 @@
 
 
     <main>
+
         {{ form_start(form) }}
-            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+        <h1 class="h3 mb-3 font-weight-normal">Register here</h1>
+
+        {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
             {{ form_row(form.password.first, {'attr': {'class':'form-control'}}) }}
             {{ form_row(form.password.second, {'attr': {'class':'form-control'}}) }}
             <button class="btn btn-lg btn-primary button primary" type="submit">
