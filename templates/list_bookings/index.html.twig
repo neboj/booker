@@ -26,7 +26,11 @@
                         <span class="date">{{ b.datetime | date('d.m.Y.') }} </span>
                         <span class="time">{{ b.datetime | date('H:i') }}h </span>
                         <div class="cta">
+                            {% if is_granted('ROLE_USER') -%}
+                            <a href="{{ path('edit_booking_auth', {bookingId: b.id}) }}" class="button-wrapper"><div class="button secondary">Edit</div></a>
+                            {% elseif is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('edit_booking', {bookingId: b.id}) }}" class="button-wrapper"><div class="button secondary">Edit</div></a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}

@@ -7,6 +7,7 @@
     --main-green-color: #45BCA6;
     --footer-blue-color: #D5E0EE;
     --primary-button: #45BCA6;
+    --fail-message-color: #CF1020;
 }
 
 *{
@@ -173,6 +174,13 @@ form input::placeholder {
 .alert.alert-success {
     background: var(--primary-button);
     border: 1px solid var(--primary-button);
+    color: white;
+    padding: 10px;
+}
+
+.alert.alert-failed {
+    background: var(--fail-message-color);
+    border: 1px solid var(--fail-message-color);
     color: white;
     padding: 10px;
 }

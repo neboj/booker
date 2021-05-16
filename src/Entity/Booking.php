@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass=BookingRepository::class)
@@ -19,6 +21,7 @@ class Booking
 
     /**
      * @ORM\Column(type="datetime")
+     * @\App\Validator\Booking()
      */
     private $datetime;
 
@@ -26,6 +29,32 @@ class Booking
      * @ORM\Column(type="string", length=255)
      */
     private $commentUser;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $lastUpdatedTimestamp;
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdatedTimestamp()
+    {
+        return $this->lastUpdatedTimestamp;
+    }
+
+    /**
+     * @param mixed $lastUpdatedTimestamp
+     */
+    public function setLastUpdatedTimestamp($lastUpdatedTimestamp): void
+    {
+        $this->lastUpdatedTimestamp = $lastUpdatedTimestamp;
+    }
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $creationDatetime;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bookings")
@@ -103,5 +132,21 @@ class Booking
         $this->datetime = $datetime;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreationDatetime()
+    {
+        return $this->creationDatetime;
+    }
+
+    /**
+     * @param mixed $creationDatetime
+     */
+    public function setCreationDatetime($creationDatetime): void
+    {
+        $this->creationDatetime = $creationDatetime;
     }
 }

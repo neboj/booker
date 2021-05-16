@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Booking Auth!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+
+    <main>
+
+
+        {{ form_start(form) }}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-error">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Enter your booking auth id</h1>
+
+        {{ form_row(form.authId, {'attr': {'class': 'form-control'}}) }}
+        <button class="btn btn-lg btn-primary button primary" type="submit">
+            Submit
+        </button>
+        {{ form_end(form) }}
+
+    </main>
+{% endblock %}

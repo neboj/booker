@@ -1,0 +1,10 @@
+{# templates/emails/registration.html.twig #}
+<h3>Successfully created new booking @ Booker!</h3>
+
+<p class="">Your booking code for authentication is: <b>{{ booking.id }}</b> </p>
+
+<p class="">Date: {{ booking.datetime | date('d.m.Y.') }} </p>
+<p class="">Time: {{ booking.datetime | date('H:i') }}h </p>
+<p class="">Note: {{ booking.commentUser }} </p>
+
+Thanks!

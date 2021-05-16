@@ -1,0 +1,15 @@
+{# templates/emails/registration.html.twig #}
+<h3>Successfully edited booking @ Booker!</h3>
+
+<h2>New information</h2>
+<p class="">Date: {{ newBooking.datetime | date('d.m.Y.') }} </p>
+<p class="">Time: {{ newBooking.datetime | date('H:i') }}h </p>
+<p class="">Note: {{ newBooking.commentUser }} </p>
+
+<h2>Old information</h2>
+<p class="">Date: {{ oldBooking.datetime | date('d.m.Y.') }} </p>
+<p class="">Time: {{ oldBooking.datetime | date('H:i') }}h </p>
+<p class="">Note: {{ oldBooking.commentUser }} </p>
+
+
+Thanks!

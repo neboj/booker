@@ -20,3 +20,4 @@
 ###< symfony/web-server-bundle ###
 
 .idea/*
+/config/packages/swiftmailer.yaml
