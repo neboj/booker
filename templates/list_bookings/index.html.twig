@@ -15,10 +15,13 @@
 
         <section class="bookings">
             <h1 class="h3 mb-3 font-weight-normal">List of reservations</h1>
+            {% if bookings|length == 0 %}
+                <span>You don't have any reservations yet</span>
+            {% endif %}
             <div class="bookings__list">
                 {% for b in bookings %}
                     <div class="booking__item">
-                        <span class="email">{{ b.user.email }}</span>
+                        <span class="email"><a href="{{ path('list_bookings_by_user', {userId: b.user.id}) }}">{{ b.user.email }}</a></span>
                         <span class="reservation">Reservation</span>
                         <span class="date">{{ b.datetime | date('d.m.Y.') }} </span>
                         <span class="time">{{ b.datetime | date('H:i') }}h </span>

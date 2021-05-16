@@ -12,6 +12,7 @@ main {
 
 form h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #booking_datetime_date {
@@ -30,8 +31,13 @@ form h1 {
     font-family: 'Quicksand', sans-serif;
 }
 
+#user__email {
+    font-weight: bold;
+    margin-left: 30px;
+}
+
 textarea {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     margin-left: 30px;
     width: 90%;
     height: 100px;

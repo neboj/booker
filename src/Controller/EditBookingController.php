@@ -20,12 +20,15 @@ class EditBookingController extends AbstractController
      */
     public function index(Request $request, int $bookingId): Response
     {
-//        $booking = $this->getDoctrine()->getRepository(Booking::class)->findBy(['user' => $this->getUser()]);
+        $this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_USER']);
+
         $booking = $this->getDoctrine()->getRepository(Booking::class)->find($bookingId);
 
-        /** @var \App\Entity\User $user */
-        $user = $this->getUser();
-        $booking->setUser($user);
+        if ($this->isGranted('ROLE_USER') && $booking->getUser()->getId() != $this->getUser()->getId()) {
+            return $this->redirectToRoute('list_bookings');
+        }
+
+        $booking->setUser($booking->getUser());
 
         $form = $this->createForm(BookingType::class, $booking);
 

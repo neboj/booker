@@ -18,6 +18,7 @@ class BookingType extends AbstractType
         $builder
             ->add('datetime', DateTimeType::class)
             ->add('commentUser', TextareaType::class)
+            ->add('commentAdmin', TextareaType::class)
         ;
     }
 

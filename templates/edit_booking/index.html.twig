@@ -27,8 +27,9 @@
 
             <h1 class="h3 mb-3 font-weight-normal">Edit booking</h1>
 
-
-            {#        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Email *" required autofocus>#}
+            {% if is_granted('ROLE_ADMIN') -%}
+                <span id="user__email">{{ booking.user.email }}</span>
+            {%- endif %}
             <div id="booking_datetime" class="form-control">
                 <div id="booking_datetime_date" data-current__date="{{ booking.datetime | date('d.m.Y-H.i') }}"><i class="far fa-calendar"></i><select id="booking_datetime_date_month" name="booking[datetime][date][month]"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select>
                     <select id="booking_datetime_date_day" name="booking[datetime][date][day]">
@@ -39,7 +40,9 @@
             {#            <input type="textfield" id="booking_commentUser" name="booking[commentUser]" placeholder="Comment User *" required="required" class="form-control">#}
             <textarea id="booking_commentUser" name="booking[commentUser]" required="required" class="form-control">{{ booking.commentUser }}</textarea>
             {{ form_row(form._token) }}
-
+            {% if is_granted('ROLE_ADMIN') -%}
+            <textarea id="booking_commentAdmin" name="booking[commentAdmin]" class="form-control" placeholder="Note to staff">{{ booking.commentAdmin }}</textarea>
+            {%- endif %}
             <div class="btn-wrapper">
                 <button class="btn btn-lg btn-primary button primary" type="submit" style="margin-right: 10px">
                     Save
