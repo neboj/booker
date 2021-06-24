@@ -20,8 +20,13 @@
                 <p>Book now & relax.</p>
             </div>
             <div class="cta">
+                {% if app.user %}
+                    <a href="{{ path('create_booking') }}" class="button-wrapper"><div class="cta-login button primary">Create Booking</div></a>
+                    <a href="{{ path('list_bookings_by_user', {userId: app.user.id}) }}" class="button-wrapper"><div class="cta-login button secondary">My Bookings</div></a>
+                {% else %}
                 <a href="{{ path('app_login') }}" class="button-wrapper"><div class="cta-login button primary">Login</div></a>
                 <a href="{{ path('registration') }}" class="button-wrapper"><div class="cta-login button secondary">Sign up</div></a>
+                {% endif %}
             </div>
         </div>
         <div class="cover">
