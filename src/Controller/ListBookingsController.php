@@ -2,13 +2,24 @@
 
 namespace App\Controller;
 
-use App\Entity\Booking;
+use App\Services\BookingService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ListBookingsController extends AbstractController
 {
+
+    /**
+     * @var BookingService
+     */
+    private $bookingService;
+
+    public function __construct(BookingService $bookingService)
+    {
+        $this->bookingService = $bookingService;
+    }
+
     /**
      * @Route("/list/bookings/", name="list_bookings")
      * @return Response
@@ -17,11 +28,7 @@ class ListBookingsController extends AbstractController
     {
         $this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_USER']);
 
-        $bookings = $this->getDoctrine()->getRepository(Booking::class)->findBy(['user' => $this->getUser()->getId()]);
-
-        if ($this->isGranted('ROLE_ADMIN')) {
-            $bookings = $this->getDoctrine()->getRepository(Booking::class)->findAll();
-        }
+        $bookings = $this->bookingService->getAllBookings($this->getUser());
 
         return $this->render('list_bookings/index.html.twig', [
             'controller_name' => 'ListBookingsController',
@@ -37,13 +44,9 @@ class ListBookingsController extends AbstractController
      */
     public function userBookings(int $userId): Response
     {
-        $this->denyAccessUnlessGranted(['ROLE_ADMIN', 'ROLE_USER']);
-        
-        if ($this->isGranted('ROLE_USER') && $userId != $this->getUser()->getId()) {
-            return $this->redirectToRoute('list_bookings');
-        }
-
-        $bookings = $this->getDoctrine()->getRepository(Booking::class)->findBy(['user' => $userId]);
+        $bookings = $this->bookingService->getAllBookingsForSpecificUser($userId);
+        if (!$bookings) return $this->redirectToRoute('list_bookings');
+        $this->denyAccessUnlessGranted('view', $bookings[0]);
 
         return $this->render('list_bookings/index.html.twig', [
             'controller_name' => 'ListBookingsController',

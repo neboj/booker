@@ -14,6 +14,11 @@
     <main>
 
         <section class="bookings">
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-failed">
+                    {{ message }}
+                </div>
+            {% endfor %}
             <h1 class="h3 mb-3 font-weight-normal">List of reservations</h1>
             {% if bookings|length == 0 %}
                 <span>You don't have any reservations yet</span>

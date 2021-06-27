@@ -20,16 +20,21 @@ class AuthenticationService
      * @var \Symfony\Component\HttpFoundation\Session\SessionInterface $session
      */
     private $session;
+    /**
+     * @var SessionService
+     */
+    private $sessionService;
 
     /**
      * AuthenticationService constructor.
      * @param EntityManagerInterface $entityManager
      * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
      */
-    public function __construct(EntityManagerInterface $entityManager, \Symfony\Component\HttpFoundation\Session\SessionInterface $session)
+    public function __construct(EntityManagerInterface $entityManager, \Symfony\Component\HttpFoundation\Session\SessionInterface $session, \App\Services\SessionService $sessionService)
     {
         $this->entityManager = $entityManager;
         $this->session = $session;
+        $this->sessionService = $sessionService;
     }
 
     /**
@@ -43,8 +48,7 @@ class AuthenticationService
         $valid = $bookingId === $authKey;
 
         if ($valid) {
-            $this->session->set('hasPassedAuth', true);
-            $this->session->set('hasPassedAuthForBookingId', $bookingId);
+            $this->sessionService->grantAccessToEditBooking($bookingId);
             $result = true;
         }
         return $result;

@@ -23,7 +23,7 @@ class CreateBookingController extends AbstractController
         $form = $this->createForm(BookingType::class, $booking, ['is_admin' => $this->isGranted('ROLE_ADMIN')]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $bookingService->saveBooking($form->getData());
+            $bookingService->saveNewBooking($form->getData());
             $this->addFlash('success', 'Booking created successfully!');
         }
         return $this->render('create_booking/index.html.twig', [

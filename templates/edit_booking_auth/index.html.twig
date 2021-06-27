@@ -16,7 +16,7 @@
 
         {{ form_start(form) }}
         {% for message in app.flashes('error') %}
-            <div class="alert alert-error">
+            <div class="alert alert-failed">
                 {{ message }}
             </div>
         {% endfor %}

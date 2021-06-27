@@ -15,7 +15,11 @@
 
         {{ form_start(form) }}
         <h1 class="h3 mb-3 font-weight-normal">Register here</h1>
-
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-failed">
+                {{ message }}
+            </div>
+        {% endfor %}
         {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
             {{ form_row(form.password.first, {'attr': {'class':'form-control'}}) }}
             {{ form_row(form.password.second, {'attr': {'class':'form-control'}}) }}
