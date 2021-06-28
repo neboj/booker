@@ -22,3 +22,4 @@
 .idea/*
 /config/packages/swiftmailer.yaml
 /booker slike/
+.env.local
